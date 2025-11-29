@@ -237,7 +237,7 @@ void os_get_lang(Utf8String *buf) {
             utf8_substring(buf, 0, i);
         }
     } else {
-        //printf("无法获取系统语言环境。\n");
+        //printf("无法获取系统语言环境.\n");
     }
 }
 

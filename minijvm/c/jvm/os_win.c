@@ -732,7 +732,7 @@ s32 conv_utf8_2_platform_encoding(ByteBuf *dst, Utf8String *src) {
         return 0;
     }
 
-    // 第一步：将 UTF-8 转换为 UTF-16
+    // 第一步:将 UTF-8 转换为 UTF-16
     s32 utf16_len = MultiByteToWideChar(CP_UTF8, 0, src->data, utf8_len, NULL, 0);
     if (utf16_len == 0) {
         return -1;
@@ -752,7 +752,7 @@ s32 conv_utf8_2_platform_encoding(ByteBuf *dst, Utf8String *src) {
     }
     utf16_buf[utf16_len] = 0;  // 确保 null 终止
 
-    // 第二步：将 UTF-16 转换为 ANSI/ACP 编码
+    // 第二步:将 UTF-16 转换为 ANSI/ACP 编码
     s32 ansi_len = WideCharToMultiByte(CP_ACP, 0, utf16_buf, utf16_len, NULL, 0, NULL, NULL);
     if (ansi_len == 0) {
         jvm_free(utf16_buf);

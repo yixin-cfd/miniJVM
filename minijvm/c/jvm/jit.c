@@ -688,7 +688,7 @@ void _gen_arith_float_2op(struct sljit_compiler *C, sljit_s32 op) {
 }
 
 void _gen_arith_long_2op(struct sljit_compiler *C, sljit_s32 op) {
-    // 首先检查除零错误（对长整型）
+    // 首先检查除零错误(对长整型)
     if (op == SLJIT_DIV_UW || op == SLJIT_DIV_SW || op == SLJIT_DIVMOD_UW || op == SLJIT_DIVMOD_SW) {
         _gen_stack_peek_long(C, -2, SLJIT_R0, 0);
         _gen_exception_check_throw_handle(C, SLJIT_EQUAL, SLJIT_R0, 0, SLJIT_IMM, 0, JVM_EXCEPTION_ARRITHMETIC, -4);
@@ -1082,7 +1082,7 @@ s32 invokevirtual(Runtime *runtime, s32 idx) {
             m = find_instance_methodInfo_by_name(ins, cmr->name, cmr->descriptor, runtime);
             spin_lock(&runtime->jvm->lock_cloader);
             {
-                pairlist_put(cmr->virtual_methods, ins->mb.clazz, m);//放入缓存，以便下次直接调用
+                pairlist_put(cmr->virtual_methods, ins->mb.clazz, m);//放入缓存,以便下次直接调用
             }
             spin_unlock(&runtime->jvm->lock_cloader);
         }

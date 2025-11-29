@@ -97,10 +97,10 @@ public class MyApp0 extends GApplication {
 This is a simplest app, override getForm() to export a GForm to AppManager, Device show the form ,and post events (Keyboard/Mouse/TouchScreen/etc) to the form.
 
 <!--
-miniJVM 本身并不包含图形系统，为便于开发，依附于VM建立了一套基于OpenGL/GLES 的图形框架，
-这套系统会在启动VM后，进入AppManager的图形界面，这个应用管理器负责管理更多的java开发的应用，
-包括安装应用，删除应用等功能，其安装应用的方式有下载jar的方式安装，或上传jar的方式，
-这些jar应用，在jar中必须包含一个config.txt的文件，用于描述此应用的一些属性，比如启动类，图标，更新地址等。   
+miniJVM 本身并不包含图形系统,为便于开发,依附于VM建立了一套基于OpenGL/GLES 的图形框架,
+这套系统会在启动VM后,进入AppManager的图形界面,这个应用管理器负责管理更多的java开发的应用,
+包括安装应用,删除应用等功能,其安装应用的方式有下载jar的方式安装,或上传jar的方式,
+这些jar应用,在jar中必须包含一个config.txt的文件,用于描述此应用的一些属性,比如启动类,图标,更新地址等.   
 -->
 
 miniJVM core does not contain a graphics system. For desktop and mobile phone, a graphics framework based on OpenGL/GLES is established attached to the JVM.
@@ -411,7 +411,7 @@ Attributes:
 </viewport>
 ```
 
-GViewPort is a scalable panel, the width and height will be automatic scale ，if child is add or remove    
+GViewPort is a scalable panel, the width and height will be automatic scale ,if child is add or remove    
 If not specify the "w" width, the default width is parent's width.   
 If not specify the "h" height, the default height is parent's height.  
 

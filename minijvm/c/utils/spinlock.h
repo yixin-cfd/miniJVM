@@ -183,7 +183,7 @@ static inline int spin_lock_adaptive(volatile spinlock_t *lock) {
             if (spin_trylock(lock))
                 return 0;
         }
-        // 自旋失败，指数退避
+        // 自旋失败,指数退避
         spin = spin < MAX_SPIN ? spin * 2 : MAX_SPIN; // min(spin * 2, MAX_SPIN);
         thrd_yield();                                 // 或者使用 nanosleep
     }

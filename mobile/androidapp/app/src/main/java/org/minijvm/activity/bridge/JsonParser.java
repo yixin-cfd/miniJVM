@@ -674,31 +674,31 @@ public class JsonParser<T> {
     public static class TypeNameConverter {
 
         /**
-         * 将Java类型名称转换为其对应的类名表示形式。
+         * 将Java类型名称转换为其对应的类名表示形式.
          * "java.lang.String"  -> "java.lang.String"
          * "java.lang.String[]" -> "[Ljava.lang.String;"
          * "int[][]" -> "[[I"
          *
-         * @param typeName 类型名称，如 "java.lang.String" 或 "java.lang.String[]" 或 "int[][]"
-         * @return 转换后的类名，如 "java.lang.String" 对于数组类型，或者 "[Ljava.lang.String;" 对于非数组类型
+         * @param typeName 类型名称,如 "java.lang.String" 或 "java.lang.String[]" 或 "int[][]"
+         * @return 转换后的类名,如 "java.lang.String" 对于数组类型,或者 "[Ljava.lang.String;" 对于非数组类型
          */
         public static String convertTypeNameToClassName(String typeName) {
             if (typeName.endsWith("[]")) {
-                // 如果是数组类型，则转换为类名表示形式
+                // 如果是数组类型,则转换为类名表示形式
                 int arrayDimension = 0;
                 while (typeName.endsWith("[]")) {
                     typeName = typeName.substring(0, typeName.length() - 2);
                     arrayDimension++;
                 }
                 if (isPrimitiveType(typeName)) {
-                    // 如果是基本类型，使用JVM的内部表示
+                    // 如果是基本类型,使用JVM的内部表示
                     return new String(new char[arrayDimension]).replace("\0", "[") + primitiveTypeToInternalForm(typeName);
                 } else {
-                    // 如果是引用类型，使用标准的类名表示
+                    // 如果是引用类型,使用标准的类名表示
                     return new String(new char[arrayDimension]).replace("\0", "[") + "L" + typeName + ";";
                 }
             } else {
-                // 如果是非数组类型，直接返回或转换基本类型
+                // 如果是非数组类型,直接返回或转换基本类型
                 if (isPrimitiveType(typeName)) {
                     return primitiveTypeToInternalForm(typeName);
                 } else {

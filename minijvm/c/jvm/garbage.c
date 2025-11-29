@@ -616,7 +616,7 @@ s32 _gc_pause_the_world(MiniJVM *jvm) {
     if (thread_list->length) {
         arraylist_iter_safe(thread_list, _list_iter_thread_pause, NULL);
 
-        //此处可能存在多线程交互，比如某个线程结束等情况，导致for错误
+        //此处可能存在多线程交互,比如某个线程结束等情况,导致for错误
         spin_lock(&thread_list->spinlock);
         {
             for (i = 0; i < thread_list->length; i++) {

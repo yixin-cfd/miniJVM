@@ -45,7 +45,7 @@ s32 org_mini_vm_RefNative_obj2id(Runtime *runtime, JClass *clazz) {
 s32 org_mini_vm_RefNative_id2obj(Runtime *runtime, JClass *clazz) {
     Long2Double l2d;
     l2d.l = localvar_getLong(runtime->localvar, 0);
-    __refer r = (__refer) (intptr_t) l2d.l;//这里不能直接转化，可能在外部发生了数据精度丢失，只能从低位强转
+    __refer r = (__refer) (intptr_t) l2d.l;//这里不能直接转化,可能在外部发生了数据精度丢失,只能从低位强转
     push_ref(runtime->stack, r);
 
 #if _JVM_DEBUG_LOG_LEVEL > 5
@@ -629,9 +629,9 @@ s32 org_mini_vm_RefNative_addJarToClasspath(Runtime *runtime, JClass *clazz) {
 
 /**
  * 通用的注解转换为字符串函数
- * 代码的核心逻辑完全相同，只是在格式上略有差异：
- *类注解格式：{注解类型名(参数=值)}
- *字段/方法注解格式：{[L注解类型名;(参数=值)}
+ * 代码的核心逻辑完全相同,只是在格式上略有差异:
+ *类注解格式:{注解类型名(参数=值)}
+ *字段/方法注解格式:{[L注解类型名;(参数=值)}
  * @param annotationsAttr
  * @param clazz
  * @param use_class_format
@@ -647,7 +647,7 @@ Utf8String *_annotations_to_string(RuntimeVisibleAnnotationsAttr *annotationsAtt
             Utf8String *typeName = class_get_utf8_string(clazz, ann->type_index);
 
             if (use_class_format) {
-                // 类注解格式：直接使用类型名，去掉L和;
+                // 类注解格式:直接使用类型名,去掉L和;
                 if (typeName && utf8_char_at(typeName, 0) == 'L' && utf8_char_at(typeName, typeName->length - 1) == ';') {
                     // 去掉L前缀和;后缀
                     Utf8String *cleanTypeName = utf8_create();
@@ -659,13 +659,13 @@ Utf8String *_annotations_to_string(RuntimeVisibleAnnotationsAttr *annotationsAtt
                     utf8_append(annotationStr, typeName);
                 }
             } else {
-                // 字段/方法注解格式：[L类型名;
+                // 字段/方法注解格式:[L类型名;
                 if (typeName && utf8_char_at(typeName, 0) == 'L' && utf8_char_at(typeName, typeName->length - 1) == ';') {
-                    // 已经是L...;格式，直接添加[前缀
+                    // 已经是L...;格式,直接添加[前缀
                     utf8_append_c(annotationStr, "[");
                     utf8_append(annotationStr, typeName);
                 } else {
-                    // 不是L...;格式，添加[L前缀和;后缀
+                    // 不是L...;格式,添加[L前缀和;后缀
                     utf8_append_c(annotationStr, "[L");
                     utf8_append(annotationStr, typeName);
                     utf8_append_c(annotationStr, ";");
@@ -704,7 +704,7 @@ Utf8String *_annotations_to_string(RuntimeVisibleAnnotationsAttr *annotationsAtt
                             break;
                         }
                         default:
-                            // 对于未知类型，添加占位符
+                            // 对于未知类型,添加占位符
                             utf8_append_c(annotationStr, "?");
                             break;
                     }
